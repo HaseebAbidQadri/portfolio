@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,29 +39,46 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
+            transition: all 0.3s ease;
         }
 
-        nav ul {
+        .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #6B48FF, #00DDEB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
             list-style: none;
+            align-items: center;
         }
 
-        nav ul li {
-            margin: 0 1.5rem;
+        .nav-menu li {
+            margin: 0 clamp(0.8rem, 2vw, 1.5rem);
         }
 
-        nav ul li a {
+        .nav-menu li a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             position: relative;
             transition: color 0.3s ease;
         }
 
-        nav ul li a::after {
+        .nav-menu li a::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -73,29 +89,57 @@
             transition: width 0.3s ease;
         }
 
-        nav ul li a:hover::after {
+        .nav-menu li a:hover::after {
             width: 100%;
         }
 
-        nav ul li a:hover {
+        .nav-menu li a:hover {
             color: #FFD700;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: clamp(20px, 5vw, 25px);
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
 
         /* Hero Section */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 2rem;
+            padding: clamp(1rem, 4vw, 2rem);
             position: relative;
             overflow: hidden;
         }
 
         #hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 700;
             background: linear-gradient(45deg, #6B48FF, #00DDEB);
             -webkit-background-clip: text;
@@ -103,30 +147,34 @@
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease forwards;
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
         }
 
         #hero p {
-            font-size: 1.5rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.3rem);
             font-weight: 300;
-            margin: 1rem 0;
+            margin: clamp(0.8rem, 2vw, 1rem) 0 clamp(1.5rem, 3vw, 2rem);
             color: #E0E0E0;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease 0.3s forwards;
+            max-width: clamp(300px, 80%, 600px);
         }
 
         #hero .cta {
             background: linear-gradient(45deg, #FFD700, #FF6B6B);
-            padding: 1rem 2.5rem;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
             border-radius: 50px;
             text-decoration: none;
             color: #1A1A2E;
             font-weight: 600;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease 0.6s forwards;
+            display: inline-block;
         }
 
         #hero .cta:hover {
@@ -143,15 +191,15 @@
 
         /* Sections */
         section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
+            padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         h2 {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 4vw, 3rem);
             background: linear-gradient(45deg, #6B48FF, #00DDEB);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -161,10 +209,10 @@
         h2::after {
             content: '';
             display: block;
-            width: 60px;
+            width: clamp(40px, 10vw, 60px);
             height: 4px;
             background: linear-gradient(45deg, #6B48FF, #00DDEB);
-            margin: 1rem auto;
+            margin: clamp(0.8rem, 2vw, 1rem) auto;
             border-radius: 2px;
         }
 
@@ -173,57 +221,49 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border-radius: 20px;
-            padding: 3rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: translateY(50px);
-            opacity: 0;
-            animation: slideIn 1s ease forwards;
         }
 
         #about p {
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             color: #E0E0E0;
             max-width: 800px;
-            margin: 0 auto 2rem;
+            margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.6;
         }
 
         .education {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 280px), 1fr));
+            gap: clamp(0.8rem, 2.5vw, 1.5rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
         }
 
         .edu-item {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 1.5rem;
+            padding: clamp(1rem, 3vw, 1.5rem);
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .edu-item:hover {
-            transform: translateY(-10px) rotateX(5deg);
+            transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         .edu-item h3 {
             color: #FFD700;
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             margin-bottom: 0.5rem;
         }
 
         .edu-item p {
             color: #E0E0E0;
-        }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         /* Skills Section */
@@ -231,26 +271,33 @@
             text-align: center;
         }
 
+        #skills > p {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: #E0E0E0;
+            max-width: 800px;
+            margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.6;
+        }
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: clamp(0.8rem, 2vw, 1.2rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
         }
 
         .skill-tag {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 0.8rem 1.5rem;
+            padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1rem, 2.5vw, 1.5rem);
             border-radius: 25px;
             font-family: 'Space Mono', monospace;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: #E0E0E0;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
         }
 
         .skill-tag:hover {
@@ -265,42 +312,48 @@
             text-align: center;
         }
 
+        #projects > p {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: #E0E0E0;
+            max-width: 800px;
+            margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.6;
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 300px), 1fr));
+            gap: clamp(1rem, 2.5vw, 1.5rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
         }
 
         .project-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             border-radius: 15px;
-            padding: 2rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            transform: translateY(50px);
-            opacity: 0;
-            animation: slideIn 1s ease forwards;
-            animation-delay: calc(0.2s * var(--i));
+            height: fit-content;
         }
 
         .project-card:hover {
-            transform: translateY(-10px) rotateX(10deg);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border: 1px solid #FFD700;
         }
 
         .project-card h3 {
             color: #FFD700;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
         }
 
         .project-card p {
             color: #E0E0E0;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
+            line-height: 1.5;
         }
 
         .project-link {
@@ -308,12 +361,18 @@
             text-decoration: none;
             font-weight: 600;
             font-family: 'Space Mono', monospace;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             transition: color 0.3s ease, transform 0.3s ease;
+            padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
+            border: 1px solid #FFD700;
+            border-radius: 25px;
+            margin-top: clamp(0.8rem, 2vw, 1rem);
             display: inline-block;
         }
 
         .project-link:hover {
-            color: #00DDEB;
+            color: #1A1A2E;
+            background: #FFD700;
             transform: scale(1.05);
         }
 
@@ -322,6 +381,14 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        #contact > p {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: #E0E0E0;
+            max-width: 800px;
+            margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.6;
         }
 
         #contact::before {
@@ -345,30 +412,27 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border-radius: 20px;
-            padding: 2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            padding: clamp(1rem, 3vw, 1.5rem);
+            max-width: clamp(300px, 90%, 600px);
+            margin: 0 auto clamp(1.5rem, 3vw, 2rem);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: translateY(50px);
-            opacity: 0;
-            animation: slideIn 1s ease forwards;
         }
 
         .contact-form .form-group {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 0.8rem;
+            padding: clamp(0.8rem, 2vw, 1rem);
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             color: #E0E0E0;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             transition: border 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -381,10 +445,10 @@
 
         .contact-form label {
             position: absolute;
-            top: 0.8rem;
-            left: 1rem;
+            top: clamp(0.8rem, 2vw, 1rem);
+            left: clamp(0.8rem, 2vw, 1rem);
             color: #E0E0E0;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             transition: all 0.3s ease;
             pointer-events: none;
         }
@@ -393,47 +457,64 @@
         .contact-form input:not(:placeholder-shown) + label,
         .contact-form textarea:focus + label,
         .contact-form textarea:not(:placeholder-shown) + label {
-            top: -0.8rem;
-            left: 0.5rem;
-            font-size: 0.8rem;
+            top: clamp(-0.6rem, -1.5vw, -0.8rem);
+            left: clamp(0.4rem, 1vw, 0.5rem);
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
             color: #FFD700;
             background: rgba(26, 26, 46, 0.8);
-            padding: 0 0.5rem;
+            padding: 0 clamp(0.4rem, 1vw, 0.5rem);
         }
 
         .contact-form textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: clamp(100px, 25vw, 120px);
         }
 
         .contact-form button {
             background: linear-gradient(45deg, #6B48FF, #00DDEB);
             border: none;
-            padding: 1rem 2.5rem;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             border-radius: 50px;
             color: #1A1A2E;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
         }
 
         .contact-form button:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 0 20px rgba(107, 72, 255, 0.7);
+        }
+
+        .contact-form button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: clamp(0.8rem, 2vw, 1rem);
+            border-radius: 10px;
+            margin-top: clamp(0.8rem, 2vw, 1rem);
+            display: none;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: clamp(0.8rem, 2.5vw, 1.2rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
             flex-wrap: wrap;
         }
 
         .contact-link {
-            width: 60px;
-            height: 60px;
+            width: clamp(40px, 10vw, 50px);
+            height: clamp(40px, 10vw, 50px);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             border-radius: 50%;
@@ -442,7 +523,7 @@
             justify-content: center;
             color: #E0E0E0;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
             border: 2px solid transparent;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -473,42 +554,127 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 clamp(0.8rem, 2vw, 1rem);
+            }
+
+            .nav-menu {
+                gap: clamp(0.5rem, 1.5vw, 0.8rem);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 45vw, 280px), 1fr));
+            }
+
+            .education {
+                grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 45vw, 260px), 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-
-            #hero p {
-                font-size: 1.2rem;
-            }
-
-            nav ul {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: clamp(60px, 15vw, 70px);
                 flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
+                background: rgba(26, 26, 46, 0.95);
+                backdrop-filter: blur(12px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
+                border-radius: 0 0 20px 20px;
+                padding: clamp(1.5rem, 4vw, 2rem) 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: clamp(0.8rem, 2vw, 1rem) 0;
+            }
+
+            .nav-menu li a {
+                font-size: clamp(1rem, 3vw, 1.2rem);
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             section {
-                padding: 3rem 1rem;
+                padding: clamp(1.5rem, 5vw, 3rem) clamp(0.8rem, 2vw, 1rem);
             }
 
-            h2 {
-                font-size: 2rem;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
-            .project-card, .edu-item {
-                transform: translateY(0);
-                animation: none;
+            .education {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form button {
+                padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            }
+
+            #hero {
+                padding: clamp(0.8rem, 3vw, 1.5rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: clamp(0.6rem, 2vw, 0.8rem);
+            }
+
+            .nav-logo {
+                font-size: clamp(1rem, 3.5vw, 1.2rem);
+            }
+
+            .hamburger span {
+                width: clamp(18px, 4.5vw, 20px);
+                height: 2px;
+                margin: 2px 0;
+            }
+
+            #hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+            }
+
+            #hero p {
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                max-width: 90%;
+            }
+
+            #hero .cta {
+                padding: clamp(0.6rem, 1.8vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+                font-size: clamp(0.8rem, 2.2vw, 0.9rem);
             }
 
             .contact-form {
-                padding: 1.5rem;
+                padding: clamp(0.8rem, 2vw, 1rem);
+            }
+
+            .skills-list {
+                gap: clamp(0.6rem, 1.5vw, 0.8rem);
+            }
+
+            .skill-tag {
+                padding: clamp(0.5rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
+                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            }
+
+            .project-card {
+                padding: clamp(1rem, 2.5vw, 1.5rem);
             }
 
             .contact-link {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: clamp(35px, 9vw, 45px);
+                height: clamp(35px, 9vw, 45px);
+                font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             }
         }
 
@@ -516,19 +682,42 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: clamp(16px, 4vw, 20px);
+            height: clamp(16px, 4vw, 20px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
     <nav>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="nav-logo">HAQ</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
     <section id="hero">
@@ -562,7 +751,7 @@
 
     <section id="skills">
         <h2>Skills</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #E0E0E0;">A versatile set of programming languages and tools to tackle modern development challenges.</p>
+        <p>A versatile set of programming languages and tools to tackle modern development challenges.</p>
         <div class="skills-list">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">C++</span>
@@ -575,96 +764,132 @@
 
     <section id="projects">
         <h2>Projects</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #E0E0E0;">A showcase of my projects, blending creativity with technical expertise to solve real-world problems.</p>
+        <p>A showcase of my projects, blending creativity with technical expertise to solve real-world problems.</p>
         <div class="projects-grid">
-            <div class="project-card" style="--i: 1;">
+            <div class="project-card">
                 <h3>Coffee Website</h3>
                 <p>A modern e-commerce platform for coffee lovers, featuring responsive design and smooth interactions using HTML, CSS, and JS.</p>
-                <a href="file:///D:/Haseeb/coffee/complete.html" class="project-link">View Project</a>
+                <a href="#" class="project-link" onclick="openProject('coffee')">View Project</a>
             </div>
-            <div class="project-card" style="--i: 2;">
+            <div class="project-card">
                 <h3>Spell Checker in C++</h3>
                 <p>An efficient spell-checking tool built in C++, leveraging algorithms for word validation and suggestions.</p>
-                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link" onclick="openProject('spellchecker')">View Project</a>
             </div>
-            <div class="project-card" style="--i: 3;">
+            <div class="project-card">
                 <h3>Music Player Website</h3>
                 <p>An interactive music player with playlist functionality, built with HTML5, CSS, and JavaScript.</p>
-                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link" onclick="openProject('musicplayer')">View Project</a>
             </div>
-            <div class="project-card" style="--i: 4;">
+            <div class="project-card">
                 <h3>Glassmorphic Calculator Website</h3>
                 <p>A sleek calculator app with glassmorphism effects, real-time calculations, and responsive design in JS.</p>
-                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link" onclick="openProject('calculator')">View Project</a>
             </div>
-            <div class="project-card" style="--i: 5;">
+            <div class="project-card">
                 <h3>Image Gallery Website</h3>
                 <p>A dynamic image gallery with lightbox effects and filtering, built with HTML, CSS Grid, and JS.</p>
-                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link" onclick="openProject('gallery')">View Project</a>
             </div>
-            <div class="project-card" style="--i: 6;">
+            <div class="project-card">
                 <h3>To-Do List App</h3>
                 <p>A task management app with drag-and-drop functionality and local storage, built using JavaScript.</p>
-                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link" onclick="openProject('todo')">View Project</a>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #E0E0E0;">Let's connect to discuss ideas, collaborations, or opportunities. I'm always open to new challenges!</p>
-        <div class="contact-form">
+        <p>Let's connect to discuss ideas, collaborations, or opportunities. I'm always open to new challenges!</p>
+        <form class="contact-form" id="contact-form">
             <div class="form-group">
-                <input type="text" id="name" placeholder=" " required>
+                <input type="text" id="name" name="name" placeholder=" " required>
                 <label for="name">Your Name</label>
             </div>
             <div class="form-group">
-                <input type="email" id="email" placeholder=" " required>
+                <input type="email" id="email" name="email" placeholder=" " required>
                 <label for="email">Your Email</label>
             </div>
             <div class="form-group">
-                <textarea id="message" placeholder=" " required></textarea>
+                <textarea id="message" name="message" placeholder=" " required></textarea>
                 <label for="message">Your Message</label>
             </div>
-            <button type="submit">Send Message</button>
-        </div>
+            <button type="submit" id="submit-btn">Send Message</button>
+            <div class="success-message" id="success-message">
+                <i class="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
+            </div>
+        </form>
         <div class="contact-links">
-            <a href="mailto:haseeb@example.com" class="contact-link"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/haseebabidqadri" class="contact-link"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/haseebabidqadri" class="contact-link"><i class="fab fa-github"></i></a>
+            <a href="mailto:haseebabidqadri@gmail.com" class="contact-link" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/haseebabidqadri" target="_blank" class="contact-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/haseebabidqadri" target="_blank" class="contact-link" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/923001234567" target="_blank" class="contact-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
     </section>
 
     <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Particle Background
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
         const particlesArray = [];
-        const numberOfParticles = 50;
+        const numberOfParticles = Math.max(20, Math.min(50, Math.floor(window.innerWidth / 20)));
 
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 5 + 1;
+                this.size = Math.random() * clamp(1, window.innerWidth / 500, 3) + 1;
                 this.speedX = Math.random() * 0.5 - 0.25;
                 this.speedY = Math.random() * 0.5 - 0.25;
+                this.life = Math.random() * 200 + 100;
+                this.maxLife = this.life;
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
+                this.life--;
 
-                if (this.size > 0.2) this.size -= 0.01;
+                if (this.life <= 0) {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.life = this.maxLife;
+                }
+
                 if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
 
             draw() {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                const opacity = this.life / this.maxLife;
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.5})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -672,6 +897,7 @@
         }
 
         function initParticles() {
+            particlesArray.length = 0;
             for (let i = 0; i < numberOfParticles; i++) {
                 particlesArray.push(new Particle());
             }
@@ -689,35 +915,16 @@
         initParticles();
         animateParticles();
 
+        // Update particles on resize
         window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            initParticles();
         });
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Scroll-triggered Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        // Placeholder for openProject function
+        function openProject(project) {
+            console.log(`Opening project: ${project}`);
+            // Add actual project link logic here
+        }
     </script>
 </body>
 </html>
-```
